@@ -1,3 +1,11 @@
+/*
+ * @Author: ShawnPhang
+ * @Date: 2022-09-23 14:00:35
+ * @Description:  
+ * @LastEditors: ShawnPhang
+ * @LastEditTime: 2022-09-28 21:23:02
+ * @site: book.palxp.com
+ */
 import { configs } from './websites'
 import downloadZip from './download'
 

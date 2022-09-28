@@ -213,21 +213,22 @@ const convert = async (options, customOptions) => {
       item.parentElement.replaceChild(document.createTextNode(text), item)
     })
   }
-  const urls = []
+  // const urls = []
   const fileName = (getText(selectors.title) || document.title)
   const realName = fileName.replace(/[\\\/\?<>:'\*\|]/g, '_')
-  const files = queryAll('img', markdownBody).map(item => {
-    const src = item.getAttribute(options.lazyKey) || item.src
-    const url = src.replace(/\?$/, '')
-    const ext = getExt(url)
-    const name = realName + '/' + md5(url) + (ext ? '.' + ext : '')
-    item.src = './' + name
-    options.urls !== false && urls.push(url)
-    return {
-      name,
-      downloadUrl: url
-    }
-  })
+  const files = []
+  // const files = queryAll('img', markdownBody).map(item => {
+  //   const src = item.getAttribute(options.lazyKey) || item.src
+  //   const url = src.replace(/\?$/, '')
+  //   const ext = getExt(url)
+  //   const name = realName + '/' + md5(url) + (ext ? '.' + ext : '')
+  //   // item.src = './' + name
+  //   options.urls !== false && urls.push(url)
+  //   return {
+  //     name,
+  //     downloadUrl: url
+  //   }
+  // })
   const info = setInfo({
     title: fileName,
     origin: origin,
@@ -239,12 +240,12 @@ const convert = async (options, customOptions) => {
   const markdwonDoc = html2markdown(info + getMarkdown(markdownBody), {})
   files.push({
     name: realName + '.md',
-    content:  markdwonDoc + '\n\n' + '> 当前文档由 [markdown文档下载插件](https://github.com/kscript/markdown-download) 下载, 原文链接: [' + fileName + '](' + location.href + ')  '
+    content:  markdwonDoc // + '\n\n' + '> 当前文档由 [markdown文档下载插件](https://github.com/kscript/markdown-download) 下载, 原文链接: [' + fileName + '](' + location.href + ')  '
   })
-  files.push({
-    name: realName + '/urls',
-    content: urls.join('\n')
-  })
+  // files.push({
+  //   name: realName + '/urls',
+  //   content: urls.join('\n')
+  // })
   noop(hook.afterExtract)(Object.assign(context, { files }))
   return {
     type: 'download',

@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
-  "name": "markdown文档下载",
-  "version": "1.0",
-  "description": "",
+  "name": "下载文章 (markdown)",
+  "version": "1.1",
+  "description": "将掘金、知乎、思否、简书、博客园、微信公众号、开源中国、CSDN的文章转为markdown文档并下载",
   "author": "kscript",
   "icons": {
     "48": "icon.png",
