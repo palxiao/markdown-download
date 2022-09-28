@@ -97,7 +97,6 @@ export const partRequest = (fileName, files, { requestLimit } = options) => {
       type: "blob"
     }).then((content) => {
       return new Promise((resolve) => {
-        alert(content)
         FileSaver(content, fileName);
         setTimeout(() => {
           resolve()
